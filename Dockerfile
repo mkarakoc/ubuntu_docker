@@ -1,13 +1,78 @@
 FROM ubuntu:17.04
 
-MAINTAINER Mesut Karakoç <...@gmail.com>
+MAINTAINER William Stein <wstein@sagemath.com>
 
-#### ROOT USER ####
 USER root
 
-RUN apt-get install -y sudo
+# See https://github.com/sagemathinc/cocalc/issues/921
+ENV LC_ALL C.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV TERM screen
 
-#RUN useradd -m main && echo "main:main" | chpasswd && adduser main sudo
+# So we can source (see http://goo.gl/oBPi5G)
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
+# Ubuntu software that are used by CoCalc (latex, pandoc, sage, jupyter)
+RUN \
+     apt-get update \
+  && apt-get install -y \
+       software-properties-common \
+       texlive \
+       texlive-latex-extra \
+       texlive-xetex \
+       tmux \
+       flex \
+       bison \
+       libreadline-dev \
+       htop \
+       screen \
+       pandoc \
+       aspell \
+       poppler-utils \
+       net-tools \
+       wget \
+       git \
+       python \
+       python-pip \
+       make \
+       g++ \
+       sudo \
+       psmisc \
+       haproxy \
+       nginx \
+       vim \
+       bup \
+       inetutils-ping \
+       lynx \
+       telnet \
+       git \
+       emacs \
+       subversion \
+       ssh \
+       m4 \
+       latexmk \
+       libpq5 \
+       libpq-dev \
+       build-essential \
+       gfortran \
+       automake \
+       dpkg-dev \
+       libssl-dev \
+       imagemagick \
+       libcairo2-dev \
+       libcurl4-openssl-dev \
+       graphviz \
+       smem \
+       python3-yaml \
+       locales \
+       locales-all
+
+# Jupyter from pip (since apt-get jupyter is ancient)
+RUN \
+  pip install "ipython<6" jupyter
+
+RUN useradd -m main && echo "main:main" | chpasswd && adduser main sudo
 RUN echo "main:main" | chpasswd && adduser main sudo
 
 #### without password
