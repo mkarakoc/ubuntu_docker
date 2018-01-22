@@ -1,4 +1,3 @@
-FROM andrewosh/binder-base
 FROM ubuntu:17.04
 
 MAINTAINER Mesut Karakoç <...@gmail.com>
@@ -6,8 +5,8 @@ MAINTAINER Mesut Karakoç <...@gmail.com>
 #### ROOT USER ####
 USER root
 
-RUN apt-get update && \
-      apt-get -y install sudo
+#RUN apt-get update
+RUN apt-get -y install sudo
 
 #RUN useradd -m main && echo "main:main" | chpasswd && adduser main sudo
 RUN echo "main:main" | chpasswd && adduser main sudo
