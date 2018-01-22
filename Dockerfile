@@ -102,16 +102,16 @@ RUN \
      cd /home/main/ \
   && git clone https://github.com/fredrik-johansson/python-flint.git \
   && cd ./python-flint \
-  && python ./setup.py build_ext --include-dirs=/home/main/flint2:/home/main/arb --library-dirs=/home/main/flint2:/home/main/arb \
-  && python setup.py install \
+  && sudo python ./setup.py build_ext --include-dirs=/home/main/flint2:/home/main/arb --library-dirs=/home/main/flint2:/home/main/arb \
+  && sudo python setup.py install \
   && cd ../
  
 # flint path for PYTHON 2
 ENV export LD_LIBRARY_PATH=/home/main/flint2:/home/main/arb:$LD_LIBRARY_PATH
 
 # flint path solution for Jupyter (python 2 kernel)
-RUN cp /home/main/flint2/libflint.so.13 anaconda2/lib/ \
- && cp -rf /home/main/arb/libarb.so.2* /home/main/anaconda2/lib/
+#RUN cp /home/main/flint2/libflint.so.13 anaconda2/lib/ \
+# && cp -rf /home/main/arb/libarb.so.2* /home/main/anaconda2/lib/
 
 # flint path for PYTHON 3 (I hope)
 #RUN sudo pip install python-flint
