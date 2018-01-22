@@ -11,7 +11,7 @@ ENV LANGUAGE en_US:en
 ENV TERM screen
 
 # So we can source (see http://goo.gl/oBPi5G)
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+#RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # Ubuntu software that are used by CoCalc (latex, pandoc, sage, jupyter)
 RUN \
@@ -107,7 +107,7 @@ RUN \
   && cd ../
  
 # flint path for PYTHON 2
-ENV export LD_LIBRARY_PATH=/home/main/flint2:/home/main/arb:$LD_LIBRARY_PATH
+ENV LD_LIBRARY_PATH=/home/main/flint2:/home/main/arb:$LD_LIBRARY_PATH
 
 # flint path solution for Jupyter (python 2 kernel)
 #RUN cp /home/main/flint2/libflint.so.13 anaconda2/lib/ \
@@ -115,9 +115,8 @@ ENV export LD_LIBRARY_PATH=/home/main/flint2:/home/main/arb:$LD_LIBRARY_PATH
 
 # flint path for PYTHON 3 (I hope)
 #RUN sudo pip install python-flint
-RUN sudo pip --version
 
 # symengine python 2 and 3
-#RUN sudo pip2 install symengine
-#RUN sudo pip install symengine
+RUN sudo pip install --upgrade pip
+RUN sudo pip install symengine
 
