@@ -90,13 +90,13 @@ RUN sudo apt-get update
 RUN sudo apt-get -y install m4
 
 # GMP LIB
-RUN wget https://gmplib.org/download/gmp/gmp-6.1.2.tar.bz2
+RUN sudo wget https://gmplib.org/download/gmp/gmp-6.1.2.tar.bz2
 RUN tar -xvf gmp-6.1.2.tar.bz2 
 RUN rm -f gmp-6.1.2.tar.bz2 
 RUN cd ./gmp-6.1.2/ && ./configure && make && sudo make install && cd ../
 
 # MPFR
-RUN wget http://www.mpfr.org/mpfr-current/mpfr-4.0.0.tar.gz
+RUN sudo wget http://www.mpfr.org/mpfr-current/mpfr-4.0.0.tar.gz
 RUN tar -xvf mpfr-4.0.0.tar.gz
 RUN rm -f mpfr-4.0.0.tar.gz
 RUN cd ./mpfr-4.0.0/ && ./configure && make && sudo make install && cd ../
