@@ -1,6 +1,7 @@
 FROM ubuntu:16.04
 
 MAINTAINER Mesut Karakoç <...@sagemath.com>
+#https://github.com/jupyter/docker-stacks/blob/master/base-notebook/Dockerfile
 
 ###################
 USER root
@@ -125,3 +126,6 @@ ENV LD_LIBRARY_PATH=/home/main/flint2:/home/main/arb:$LD_LIBRARY_PATH
 RUN sudo pip install --upgrade pip
 RUN sudo pip install symengine
 
+#### MAIN USER ####
+USER main
+###################
