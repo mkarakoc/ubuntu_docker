@@ -5,9 +5,6 @@ MAINTAINER Mesut Karakoç <...@gmail.com>
 #### ROOT USER ####
 USER root
 
-#RUN apt-get update
-RUN apt-get -y install sudo
-
 #RUN useradd -m main && echo "main:main" | chpasswd && adduser main sudo
 RUN echo "main:main" | chpasswd && adduser main sudo
 
