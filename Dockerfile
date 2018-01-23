@@ -5,8 +5,10 @@ MAINTAINER Mesut Karakoç <...@gmail.com>
 #### ROOT USER ####
 USER root
 
-RUN apt-get --no-install-recommends update && \
-      apt-get --no-install-recommends -y install sudo
+RUN apt-get --no-install-recommends update \
+ && apt-get --no-install-recommends -y install \
+            sudo \
+            apt-utils
 
 #RUN useradd -m main && echo "main:main" | chpasswd && adduser main sudo
 RUN echo "main:main" | chpasswd && adduser main sudo
