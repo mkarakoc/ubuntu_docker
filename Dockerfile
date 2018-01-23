@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:latest
 
 MAINTAINER Mesut Karakoç <...@sagemath.com>
 #https://github.com/jupyter/docker-stacks/blob/master/base-notebook/Dockerfile
