@@ -7,34 +7,6 @@ MAINTAINER Mesut Karakoç <...@sagemath.com>
 USER root
 ###################
 
-# See https://github.com/sagemathinc/cocalc/issues/921
-ENV LC_ALL C.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV TERM screen
-
-# So we can source (see http://goo.gl/oBPi5G)
-#RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-
-# Ubuntu software that are used by CoCalc (latex, pandoc, sage, jupyter)
-RUN \
-     apt-get install -y \
-       software-properties-common \
-       wget \
-       git \
-       python \
-       python-pip \
-       make \
-       sudo \
-       libpq5 \
-       libpq-dev \
-       build-essential \
-       gfortran \
-       automake \
-       python3-yaml \
-       locales \
-       locales-all
-
 ## create password-less user
 RUN useradd -m main && echo "main:main" | chpasswd && adduser main sudo
 RUN echo "main:main" | chpasswd && adduser main sudo
