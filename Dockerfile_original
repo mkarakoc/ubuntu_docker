@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-MAINTAINER Mesut Karakoç <...@sagemath.com>
+MAINTAINER Mesut Karakoç <mesudkarakoc@gmail.com>
 #https://github.com/jupyter/docker-stacks/blob/master/base-notebook/Dockerfile
 
 ###################
