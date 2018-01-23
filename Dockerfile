@@ -20,10 +20,10 @@ USER main
 
 # Jupyter from pip (since apt-get jupyter is ancient)
 RUN \
-  sudo pip install "ipython<6" jupyter
+  pip install "ipython<6" jupyter
 
 RUN jupyter notebook --generate-config
 ADD jupyter_notebook_config.py jupyter_notebook_config.py
 RUN cp jupyter_notebook_config.py /home/main/.jupyter/
-RUN sudo pip install plotly
+
 
