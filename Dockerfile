@@ -27,7 +27,7 @@ USER main
 
 # Jupyter from pip (since apt-get jupyter is ancient)
 RUN \
-  pip install "ipython<6" jupyter
+  pip install jupyter
 
 RUN jupyter notebook --generate-config
 ADD jupyter_notebook_config.py jupyter_notebook_config.py
