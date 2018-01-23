@@ -68,6 +68,6 @@ RUN cp /home/main/flint2/libflint.so.13 anaconda2/lib/ \
 RUN sudo pip --version
 
 # symengine python 2 and 3
-/home/main/anaconda2/bin/pip install symengine
+RUN /home/main/anaconda2/bin/pip install symengine
 #RUN sudo pip install symengine
 
