@@ -46,9 +46,10 @@ RUN cd ./flint2/ && ./configure && make && sudo make install && cd ../
 RUN git clone https://github.com/fredrik-johansson/arb.git
 RUN cd ./arb/ && ./configure && make && sudo make install && cd ../
 
+##############
 # python-flint
+##############
 RUN sudo apt-get -y install cython python-dev
-# RUN sudo pip install python-flint
 
 RUN git clone https://github.com/fredrik-johansson/python-flint.git
 RUN cd ./python-flint \
@@ -64,10 +65,9 @@ RUN cp /home/main/flint2/libflint.so.13 anaconda2/lib/ \
  && cp -rf /home/main/arb/libarb.so.2* /home/main/anaconda2/lib/
 
 # flint path for PYTHON 3 (I hope)
-#RUN sudo pip install python-flint
-RUN sudo pip --version
+RUN sudo /home/main/anaconda2/envs/python3/bin/pip install python-flint
 
 # symengine python 2 and 3
-RUN /home/main/anaconda2/bin/pip install symengine
-#RUN sudo pip install symengine
+RUN sudo /home/main/anaconda2/bin/pip install symengine
+RUN sudo /home/main/anaconda2/envs/python3/bin/pip install symengine
 
