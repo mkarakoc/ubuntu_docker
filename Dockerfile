@@ -8,7 +8,9 @@ USER root
 ###################
 
 RUN \
-     apt-get install -y sudo
+     apt-get install -y sudo \
+             python \
+             python-pip
 
 ## create password-less user
 RUN useradd -m main && echo "main:main" | chpasswd && adduser main sudo
