@@ -8,7 +8,9 @@ USER root
 ###################
 
 RUN \
-     apt-get install -y sudo \
+     apt-get update \
+  && apt-get install -y \ 
+             sudo \
              python \
              python-pip
 
