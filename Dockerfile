@@ -7,6 +7,9 @@ MAINTAINER Mesut Karakoç <...@sagemath.com>
 USER root
 ###################
 
+RUN \
+     apt-get install -y sudo
+
 ## create password-less user
 RUN useradd -m main && echo "main:main" | chpasswd && adduser main sudo
 RUN echo "main:main" | chpasswd && adduser main sudo
