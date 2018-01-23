@@ -25,23 +25,12 @@ RUN \
        python \
        python-pip \
        make \
-       g++ \
        sudo \
-       subversion \
-       ssh \
-       m4 \
        libpq5 \
        libpq-dev \
        build-essential \
        gfortran \
        automake \
-       dpkg-dev \
-       libssl-dev \
-       imagemagick \
-       libcairo2-dev \
-       libcurl4-openssl-dev \
-       graphviz \
-       smem \
        python3-yaml \
        locales \
        locales-all
