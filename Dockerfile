@@ -1,5 +1,9 @@
-FROM jupyter/jupyterhub:latest
+FROM python:3.6.3-alpine3.6
 
-MAINTAINER Mesut Karakoç <...@sagemath.com>
-#https://github.com/jupyter/docker-stacks/blob/master/base-notebook/Dockerfile
+ARG JUPYTERHUB_VERSION=0.8.1
 
+RUN pip3 install --no-cache jupyterhub==${JUPYTERHUB_VERSION}
+ENV LANG=en_US.UTF-8
+
+USER nobody
+CMD ["jupyterhub"]
