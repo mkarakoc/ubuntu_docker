@@ -128,3 +128,7 @@ ENV LD_LIBRARY_PATH=/home/main/flint2:/home/main/arb:$LD_LIBRARY_PATH
 RUN sudo pip install --upgrade pip
 RUN sudo pip install symengine
 
+#### MAIN USER ####
+USER main
+###################
+ENV HOME /home/main
