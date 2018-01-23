@@ -5,8 +5,8 @@ MAINTAINER Mesut Karakoç <...@gmail.com>
 #### ROOT USER ####
 USER root
 
-RUN apt-get update && \
-      apt-get -y install sudo
+RUN apt-get --no-install-recommends update && \
+      apt-get --no-install-recommends -y install sudo
 
 #RUN useradd -m main && echo "main:main" | chpasswd && adduser main sudo
 RUN echo "main:main" | chpasswd && adduser main sudo
@@ -22,8 +22,7 @@ RUN cp jupyter_notebook_config.py /home/main/.jupyter/
 RUN sudo pip install plotly
 
 # M4: macro processing language
-RUN sudo apt-get update
-RUN sudo apt-get -y install m4
+RUN sudo apt-get --no-install-recommends -y install m4
 
 # GMP LIB
 RUN wget https://gmplib.org/download/gmp/gmp-6.1.2.tar.bz2
@@ -49,7 +48,7 @@ RUN cd ./arb/ && ./configure && make && sudo make install && cd ../
 ##############
 # python-flint
 ##############
-RUN sudo apt-get -y install cython python-dev
+RUN sudo apt-get --no-install-recommends -y install cython python-dev
 
 RUN git clone https://github.com/fredrik-johansson/python-flint.git
 RUN cd ./python-flint \
