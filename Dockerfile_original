@@ -126,6 +126,13 @@ ENV LD_LIBRARY_PATH=/home/main/flint2:/home/main/arb:$LD_LIBRARY_PATH
 RUN sudo pip install --upgrade pip
 RUN sudo pip install symengine
 
+# jupyter nbextensions (enable)
+RUN sudo pip install jupyter_contrib_nbextensions
+RUN sudo pip install jupyter_nbextensions_configurator
+
+# jupyter nbextensions (enable)
+RUN jupyter-nbextensions_configurator enable --user
+
 #### MAIN USER ####
 USER main
 ###################
