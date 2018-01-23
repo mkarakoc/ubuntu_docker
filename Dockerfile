@@ -1,27 +1,29 @@
 FROM andrewosh/binder-base
 
-MAINTAINER Mesut Karakoç <...@gmail.com>
+MAINTAINER Mesut Karakoç <mesudkarakoc@gmail.com>
 
 #### ROOT USER ####
 USER root
+###################
 
 RUN apt-get --no-install-recommends update \
  && apt-get --no-install-recommends -y install \
             sudo \
             apt-utils
 
+#### make MAIN user passwordless
 #RUN useradd -m main && echo "main:main" | chpasswd && adduser main sudo
 RUN echo "main:main" | chpasswd && adduser main sudo
-
-#### without password
 RUN passwd --delete main
+
 #### MAIN USER ####
 USER main
+###################
 
+# jupyter notebook
 RUN jupyter notebook --generate-config
 ADD jupyter_notebook_config.py jupyter_notebook_config.py
 RUN cp jupyter_notebook_config.py /home/main/.jupyter/
-RUN sudo pip install plotly
 
 # M4: macro processing language
 RUN sudo apt-get --no-install-recommends -y install m4
@@ -59,16 +61,26 @@ RUN cd ./python-flint \
  && cd ../
  
 # flint path for PYTHON 2
-ENV export LD_LIBRARY_PATH=/home/main/flint2:/home/main/arb:$LD_LIBRARY_PATH
-
-# flint path solution for Jupyter (python 2 kernel)
+#ENV export LD_LIBRARY_PATH=/home/main/flint2:/home/main/arb:$LD_LIBRARY_PATH
 RUN cp /home/main/flint2/libflint.so.13 anaconda2/lib/ \
  && cp -rf /home/main/arb/libarb.so.2* /home/main/anaconda2/lib/
 
-# flint path for PYTHON 3 (I hope)
+# upgrade pip 2 and 3
+RUN sudo /home/main/anaconda2/bin/pip install --upgrade pip
+RUN sudo /home/main/anaconda2/envs/python3/bin/pip install --upgrade pip
+
+# flint for PYTHON 3
 RUN sudo /home/main/anaconda2/envs/python3/bin/pip install python-flint
+
+# install plotly 
+RUN sudo /home/main/anaconda2/bin/pip install plotly
+RUN sudo /home/main/anaconda2/envs/python3/bin/pip install plotly
 
 # symengine python 2 and 3
 RUN sudo /home/main/anaconda2/bin/pip install symengine
 RUN sudo /home/main/anaconda2/envs/python3/bin/pip install symengine
+
+# jupyter nbextensions
+RUN sudo /home/main/anaconda2/envs/python3/bin/pip install jupyter_contrib_nbextensions
+RUN sudo /home/main/anaconda2/envs/python3/bin/pip install jupyter_nbextensions_configurator
 
