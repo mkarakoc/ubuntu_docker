@@ -81,10 +81,10 @@ ADD jupyter_notebook_config.py jupyter_notebook_config.py
 RUN cp jupyter_notebook_config.py /home/main/.jupyter/
 
 # jupyter nbextensions (install)
-RUN sudo /home/main/anaconda2/bin/pip install jupyter_contrib_nbextensions
-RUN sudo /home/main/anaconda2/bin/pip install jupyter_nbextensions_configurator
-#RUN sudo /home/main/anaconda2/envs/python3/bin/pip install jupyter_contrib_nbextensions
-#RUN sudo /home/main/anaconda2/envs/python3/bin/pip install jupyter_nbextensions_configurator
+#RUN sudo /home/main/anaconda2/bin/pip install jupyter_contrib_nbextensions
+#RUN sudo /home/main/anaconda2/bin/pip install jupyter_nbextensions_configurator
+RUN sudo /home/main/anaconda2/envs/python3/bin/pip install jupyter_contrib_nbextensions
+RUN sudo /home/main/anaconda2/envs/python3/bin/pip install jupyter_nbextensions_configurator
 
 RUN git clone \
                https://github.com/ipython-contrib/jupyter_contrib_nbextensions \
