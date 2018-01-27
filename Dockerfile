@@ -139,6 +139,12 @@ RUN cp -rf \
             /home/main/jupyter_contrib_nbextensions/src/jupyter_contrib_nbextensions/nbextensions/ \
             /home/main/.ipython/nbextensions/               
 
+#### MAIN USER ####
+USER main
+###################
+
+WORKDIR /home/main
+
 # jupyter nbextensions (enable)
 RUN jupyter-nbextensions_configurator enable --user
 
@@ -157,10 +163,3 @@ RUN \
   && jupyter nbextension enable hide_input/main \   
   && jupyter nbextension enable runtools/main \   
   && jupyter nbextension enable toggle_all_line_numbers/main 
-
-#### MAIN USER ####
-USER main
-###################
-
-WORKDIR /home/main
-
