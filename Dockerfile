@@ -133,11 +133,11 @@ RUN sudo pip install jupyter_nbextensions_configurator
 RUN git clone \
                https://github.com/ipython-contrib/jupyter_contrib_nbextensions \
                /home/main/jupyter_contrib_nbextensions
-RUN mkdir /home/main/.ipython \
- && mkdir /home/main/.ipython/nbextensions/
+RUN mkdir /home/main/.ipython
+
 RUN cp -rf \
             /home/main/jupyter_contrib_nbextensions/src/jupyter_contrib_nbextensions/nbextensions/ \
-            /home/main/.ipython/nbextensions/               
+            /home/main/.ipython/
 
 #### MAIN USER ####
 USER main
