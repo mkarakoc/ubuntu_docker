@@ -145,3 +145,6 @@ RUN jupyter-nbextensions_configurator enable --user
 #### MAIN USER ####
 USER main
 ###################
+
+WORKDIR /home/main
+
